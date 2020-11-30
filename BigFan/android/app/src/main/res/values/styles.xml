@@ -1,0 +1,11 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:textColor">#D8D8D8</item>
+        <item name="android:textScaleX">0.95</item>
+        <item name="android:fontFamily">@font/gonggothic_light</item>
+    </style>
+
+</resources>
