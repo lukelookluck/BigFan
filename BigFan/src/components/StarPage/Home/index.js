@@ -10,9 +10,7 @@ import {
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import {TabView, SceneMap} from 'react-native-tab-view';
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import SingleArticle from '../../components/SingleArticle';
+import SingleArticle from '../../SingleArticle';
 
 import {useCollapsibleScene} from 'react-native-collapsible-tab-view';
 

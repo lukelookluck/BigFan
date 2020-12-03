@@ -183,7 +183,7 @@ function MyStack() {
         name="StarPage"
         options={({route}) => ({
           title: route.params.name,
-          // cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
           headerShown: true,
           headerTintColor: 'white',
           headerStyle: {

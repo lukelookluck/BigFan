@@ -1,8 +1,9 @@
 import React, {useRef, useState} from 'react';
 import {View, Text, Animated} from 'react-native';
 
-import TempCompo from '../../components/TempCompo';
+import StarPageHome from '../../components/StarPage/Home';
 import SaySomething from '../../components/StarPage/SaySome/Base';
+import BoardList from '../../components/StarPage/BoardList';
 
 import {
   CollapsibleTabView,
@@ -55,11 +56,11 @@ export default function MyPage({navigation, route}) {
   const renderScene = ({route}) => {
     switch (route.key) {
       case 'first':
-        return <TempCompo starName={starName} />;
+        return <StarPageHome starName={starName} />;
       case 'second':
         return <SaySomething starName={starName} />;
       case 'third':
-        return <SomeRoute routeKey="third" color="black" />;
+        return <BoardList />;
       case 'fourth':
         return <SomeRoute routeKey="fourth" color="black" />;
       case 'fifth':

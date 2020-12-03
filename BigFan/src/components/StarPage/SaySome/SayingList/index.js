@@ -2,20 +2,15 @@ import React, {useState, useEffect, useContext} from 'react';
 import {
   Text,
   Pressable,
-  StyleSheet,
-  ScrollView,
-  TextInput,
-  Modal,
   View,
   Alert,
   TouchableHighlight,
-  TouchableOpacity,
+  FlatList,
 } from 'react-native';
 // import axios from 'axios';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 // import {CommonContext} from '../../context/CommonContext';
-// import ReplyList from '../../components/ReplyList';
 // import AsyncStorage from '@react-native-community/async-storage';
 
 export default function (props) {
@@ -273,10 +268,124 @@ export default function (props) {
   // }
 
   return (
-    <View style={{paddingTop: 10}}>
-      {comments}
-      {comments}
-      {comments}
-    </View>
+    <FlatList
+      style={{
+        paddingTop: 10,
+        borderBottomWidth: 2,
+        borderBottomColor: '#dbdbdb',
+      }}
+      data={bC}
+      keyExtractor={(item) => item.id.toString()}
+      renderItem={({item}) => (
+        <View
+          key={item.id}
+          style={{
+            backgroundColor: '#282d29',
+            paddingVertical: 20,
+            paddingHorizontal: 10,
+            borderTopWidth: 2,
+            borderTopColor: '#dbdbdb',
+          }}>
+          <Pressable
+            onLongPress={() => {
+              props.setModalVisible3(true);
+              props.setMyComment(item);
+            }}
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              // backgroundColor: 'red'
+            }}>
+            <View
+              style={{
+                flexDirection: 'row',
+                flex: 1,
+              }}>
+              <Icon
+                name="person-circle"
+                style={{fontSize: 50, color: '#919191'}}
+              />
+              <View style={{flexDirection: 'column', marginLeft: 5, flex: 1}}>
+                <Text
+                  style={{
+                    fontWeight: '700',
+                    fontSize: 14,
+                    // color: '#5e5e5e',
+                    paddingTop: 5,
+                    paddingBottom: 2,
+                  }}>
+                  {item.nickname}
+                </Text>
+                <Text style={{fontSize: 14}}>{item.content}</Text>
+                <View style={{flexDirection: 'row', paddingVertical: 5}}>
+                  {(item.likesCnt > 0 && (
+                    <Text
+                      style={{
+                        marginRight: 10,
+                        fontSize: 12,
+                        color: '#9f9f9f',
+                      }}>
+                      좋아요 {item.likesCnt}개
+                    </Text>
+                  )) || <Text></Text>}
+                  <Text style={{fontSize: 12, color: '#9f9f9f'}}>
+                    {getTime(item.created_at)}
+                  </Text>
+                </View>
+              </View>
+            </View>
+            {(item.isLiked === false && (
+              <TouchableHighlight
+                style={{
+                  borderRadius: 20,
+                }}
+                onPress={() => {
+                  likeComment(item);
+                }}
+                underlayColor="#3b3d3b">
+                <Icon
+                  name="heart-outline"
+                  color="#ff8000"
+                  style={{
+                    fontSize: 22.5,
+                    paddingVertical: 5,
+                    paddingHorizontal: 6,
+                    // backgroundColor: 'white',
+                    borderRadius: 20,
+                  }}
+                />
+              </TouchableHighlight>
+            )) || (
+              <TouchableHighlight
+                style={{
+                  borderRadius: 20,
+                }}
+                onPress={() => likeComment(item)}
+                underlayColor="#3b3d3b">
+                <Icon
+                  name="heart"
+                  color="#ff8000"
+                  style={{
+                    fontSize: 22.5,
+                    paddingVertical: 5,
+                    paddingHorizontal: 6,
+                    // backgroundColor: 'white',
+                    borderRadius: 20,
+                  }}
+                />
+              </TouchableHighlight>
+            )}
+          </Pressable>
+          {/* <ReplyList
+          comment={comment.replies}
+          boardId={props.boardId}
+          modalVisible3={props.modalVisible3}
+          setModalVisible3={props.setModalVisible3}
+          setMyComment={props.setMyComment}
+        /> */}
+        </View>
+      )}
+    />
   );
 }
