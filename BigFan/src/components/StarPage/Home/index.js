@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useContext} from 'react';
 import {
   View,
   Text,
@@ -13,39 +13,10 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import SingleArticle from '../../SingleArticle';
 
 import {useCollapsibleScene} from 'react-native-collapsible-tab-view';
+import {CommonContext} from '../../../common/context/CommonContext';
 
 export default function MyPage(props) {
-  const articles = [
-    {
-      id: 1,
-      nickname: '닉네임',
-      title: '제목',
-      content: '내용',
-      likesCnt: 1,
-      commentsCnt: 0,
-      starName: '스타이름',
-    },
-    {
-      id: 2,
-      nickname: '닉네임',
-      title: '제목',
-      content: '내용',
-      likesCnt: 1,
-      commentsCnt: 0,
-      starName: '스타이름',
-    },
-    {
-      id: 3,
-      nickname: '닉네임',
-      title: '제목',
-      content: '내용',
-      likesCnt: 1,
-      commentsCnt: 0,
-      starName: '스타이름',
-    },
-  ];
-
-  const articleList = articles.map((article, idx) => {
+  const articleList = props.articles.map((article, idx) => {
     return <SingleArticle key={idx} article={article} />;
   });
 
@@ -121,8 +92,6 @@ export default function MyPage(props) {
         backgroundColor: '#282d29',
       }}>
       <MyHeader />
-      {articleList}
-      {articleList}
       {articleList}
       {articleList}
       {articleList}

@@ -10,9 +10,7 @@ import {
   useCollapsibleScene,
 } from 'react-native-collapsible-tab-view';
 
-export default function MyPage({navigation, route}) {
-  const starName = route.params.name;
-
+export default function MyPage({articles, starName}) {
   const [index, setIndex] = useState(0);
   const [routes] = React.useState([
     {key: 'first', title: '홈'},
@@ -25,19 +23,6 @@ export default function MyPage({navigation, route}) {
   const handleIndexChange = (index) => {
     setIndex(index);
   };
-
-  const renderHeader = () => (
-    <View
-      style={{
-        height: 250,
-        backgroundColor: '#2196f3',
-        justifyContent: 'center',
-        alignItems: 'center',
-        elevation: 4,
-      }}>
-      <Text style={{color: 'white', fontSize: 24}}>COLLAPSIBLE</Text>
-    </View>
-  );
 
   const SomeRoute = ({routeKey, color}) => {
     const scrollPropsAndRef = useCollapsibleScene(routeKey);
@@ -56,7 +41,7 @@ export default function MyPage({navigation, route}) {
   const renderScene = ({route}) => {
     switch (route.key) {
       case 'first':
-        return <StarPageHome starName={starName} />;
+        return <StarPageHome starName={starName} articles={articles} />;
       case 'second':
         return <SaySomething starName={starName} />;
       case 'third':

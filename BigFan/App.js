@@ -8,7 +8,9 @@ import {
   StatusBar,
 } from 'react-native';
 
-import {CommonContext} from './src/common/context/CommonContext';
+import rootReducer from './src/redux/modules';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
@@ -26,6 +28,7 @@ import Schedule from './src/pages/Schedule';
 import BoardList from './src/pages/BoardList';
 import MyPage from './src/pages/MyPage';
 import StarPage from './src/pages/StarPage';
+import StarPageContainer from './src/redux/containers/StarPageContainer';
 
 const Tab = createBottomTabNavigator();
 
@@ -111,60 +114,6 @@ function MyTabs() {
   );
 }
 
-const Tab3 = createMaterialTopTabNavigator();
-
-function Temp2() {
-  return (
-    <Tab3.Navigator>
-      <Tab3.Screen name="Home" component={FU} />
-      <Tab3.Screen name="Settings" component={FU2} />
-    </Tab3.Navigator>
-  );
-}
-
-function FU() {
-  return (
-    <ScrollView>
-      <View style={{padding: 100}}>
-        <Text>asdas</Text>
-      </View>
-      <View style={{padding: 100}}>
-        <Text>asdas</Text>
-      </View>
-      <View style={{padding: 100}}>
-        <Text>asd222as</Text>
-      </View>
-      <View style={{padding: 100}}>
-        <Text>asd33as</Text>
-      </View>
-      <View style={{padding: 100}}>
-        <Text>as44das</Text>
-      </View>
-    </ScrollView>
-  );
-}
-function FU2() {
-  return (
-    <ScrollView>
-      <View style={{padding: 100}}>
-        <Text>asdas</Text>
-      </View>
-      <View style={{padding: 100}}>
-        <Text>asdas</Text>
-      </View>
-      <View style={{padding: 100}}>
-        <Text>asdas3333</Text>
-      </View>
-      <View style={{padding: 100}}>
-        <Text>asd444as</Text>
-      </View>
-      <View style={{padding: 100}}>
-        <Text>asd55as</Text>
-      </View>
-    </ScrollView>
-  );
-}
-
 const Stack = createStackNavigator();
 
 function MyStack() {
@@ -192,7 +141,7 @@ function MyStack() {
             borderBottomWidth: 1,
           },
         })}
-        component={StarPage}
+        component={StarPageContainer}
       />
       {/* <Stack.Screen name="Settings" component={Settings} /> */}
     </Stack.Navigator>
@@ -200,8 +149,71 @@ function MyStack() {
 }
 
 export default function App() {
+  const homeArticles = [
+    {
+      id: 1,
+      nickname: '닉네임',
+      title: '제목',
+      content: '내용',
+      likesCnt: 1,
+      commentsCnt: 0,
+      starName: '스타이름',
+    },
+    {
+      id: 2,
+      nickname: '닉네임',
+      title: '제목',
+      content: '내용',
+      likesCnt: 1,
+      commentsCnt: 0,
+      starName: '스타이름',
+    },
+    {
+      id: 3,
+      nickname: '닉네임',
+      title: '제목',
+      content: '내용',
+      likesCnt: 1,
+      commentsCnt: 0,
+      starName: '스타이름',
+    },
+  ];
+
+  const starPageHomeArticles = [
+    {
+      id: 1,
+      nickname: '닉네임',
+      title: '제목starPageHomeArticles',
+      content: '내용',
+      likesCnt: 1,
+      commentsCnt: 0,
+      starName: '스타이름',
+    },
+    {
+      id: 2,
+      nickname: '닉네임',
+      title: '제목',
+      content: '내용',
+      likesCnt: 1,
+      commentsCnt: 0,
+      starName: '스타이름',
+    },
+    {
+      id: 3,
+      nickname: '닉네임',
+      title: '제목',
+      content: '내용',
+      likesCnt: 1,
+      commentsCnt: 0,
+      starName: '스타이름',
+    },
+  ];
+
+  const store = createStore(rootReducer);
+  console.log(store.getState());
+
   return (
-    <CommonContext.Provider value={{}}>
+    <Provider store={store}>
       <NavigationContainer>
         {/* {tempLoading === true &&
           ((user.token === '' && (
@@ -211,7 +223,7 @@ export default function App() {
           )) || <MyStack />)} */}
         <MyStack />
       </NavigationContainer>
-    </CommonContext.Provider>
+    </Provider>
   );
 }
 

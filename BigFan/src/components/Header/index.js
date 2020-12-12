@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {CommonContext} from '../../../src/common/context/CommonContext';
 
 export default function Header(props) {
-  const {serverUrl, user, setUser} = useContext(CommonContext);
+  // const {serverUrl, user, setUser} = useContext(CommonContext);
 
   const onPress = () => {
     props.setPressed(false);
