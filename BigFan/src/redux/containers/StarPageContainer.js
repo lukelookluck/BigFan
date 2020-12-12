@@ -1,15 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import StarPage from '../../pages/StarPage';
-import {receive} from '../modules/counter';
+import {receive} from '../modules/StarPageInit';
 
-function StarPageContainer({articles, route}) {
-  return <StarPage articles={articles} starName={route.params.name} />;
+function StarPageContainer({HomeArticles, route}) {
+  return <StarPage HomeArticles={HomeArticles} starName={route.params.name} />;
 }
 
 function mapStateToProps(state) {
   return {
-    articles: state.counter.articles,
+    HomeArticles: state.StarPageInit.HomeArticles,
   };
 }
 

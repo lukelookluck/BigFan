@@ -5,7 +5,7 @@ const RECEIVE = 'counter/RECEIVE';
 export const receive = createAction(RECEIVE);
 
 const initialState = {
-  articles: [
+  HomeArticles: [
     {
       id: 1,
       nickname: '닉네임',
@@ -36,13 +36,13 @@ const initialState = {
   ],
 };
 
-const counter = handleActions(
+const StarPageInit = handleActions(
   {
     [RECEIVE]: (state, action) => ({
-      articles: state.articles,
+      HomeArticles: state.HomeArticles,
     }),
   },
   initialState,
 );
 
-export default counter;
+export default StarPageInit;

@@ -16,7 +16,7 @@ import {useCollapsibleScene} from 'react-native-collapsible-tab-view';
 import {CommonContext} from '../../../common/context/CommonContext';
 
 export default function MyPage(props) {
-  const articleList = props.articles.map((article, idx) => {
+  const articleList = props.HomeArticles.map((article, idx) => {
     return <SingleArticle key={idx} article={article} />;
   });
 

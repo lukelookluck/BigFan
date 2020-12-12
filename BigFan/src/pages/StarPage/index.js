@@ -10,7 +10,7 @@ import {
   useCollapsibleScene,
 } from 'react-native-collapsible-tab-view';
 
-export default function MyPage({articles, starName}) {
+export default function MyPage({HomeArticles, starName}) {
   const [index, setIndex] = useState(0);
   const [routes] = React.useState([
     {key: 'first', title: '홈'},
@@ -41,7 +41,7 @@ export default function MyPage({articles, starName}) {
   const renderScene = ({route}) => {
     switch (route.key) {
       case 'first':
-        return <StarPageHome starName={starName} articles={articles} />;
+        return <StarPageHome starName={starName} HomeArticles={HomeArticles} />;
       case 'second':
         return <SaySomething starName={starName} />;
       case 'third':
