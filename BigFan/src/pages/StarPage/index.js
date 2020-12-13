@@ -4,6 +4,7 @@ import {View, Text, Animated} from 'react-native';
 import StarPageHome from '../../components/StarPage/Home';
 import SaySomething from '../../components/StarPage/SaySome/Base';
 import BoardList from '../../components/StarPage/BoardList';
+import Album from '../../components/StarPage/Album';
 
 import {
   CollapsibleTabView,
@@ -47,7 +48,7 @@ export default function MyPage({HomeArticles, starName}) {
       case 'third':
         return <BoardList />;
       case 'fourth':
-        return <SomeRoute routeKey="fourth" color="black" />;
+        return <Album />;
       case 'fifth':
         return <SomeRoute routeKey="fifth" color="black" />;
       default:
