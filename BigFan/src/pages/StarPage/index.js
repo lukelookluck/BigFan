@@ -5,6 +5,7 @@ import StarPageHome from '../../components/StarPage/Home';
 import SaySomething from '../../components/StarPage/SaySome/Base';
 import BoardList from '../../components/StarPage/BoardList';
 import Album from '../../components/StarPage/Album';
+import Info from '../../components/StarPage/Info';
 
 import {
   CollapsibleTabView,
@@ -50,7 +51,7 @@ export default function MyPage({HomeArticles, starName}) {
       case 'fourth':
         return <Album />;
       case 'fifth':
-        return <SomeRoute routeKey="fifth" color="black" />;
+        return <Info />;
       default:
         return null;
     }
