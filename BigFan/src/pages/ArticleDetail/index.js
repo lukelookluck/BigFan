@@ -80,7 +80,10 @@ export default function ArticleDetail(props) {
             paddingVertical: 5,
           }}>
           <View style={{flexDirection: 'row'}}>
-            <Icon name="person-circle" style={{fontSize: 40}} />
+            <Icon
+              name="person-circle"
+              style={{fontSize: 45, color: '#919191'}}
+            />
             <View style={{marginLeft: 10, justifyContent: 'center'}}>
               <Text style={{fontSize: 15, fontWeight: '700'}}>
                 {article.nickname}
@@ -95,7 +98,7 @@ export default function ArticleDetail(props) {
               borderRadius: 20,
             }}
             onPress={() => setModalVisible2(true)}
-            underlayColor="#dfdfdf">
+            underlayColor="#737773">
             <Icon
               name="ellipsis-vertical"
               style={{
@@ -230,7 +233,7 @@ export default function ArticleDetail(props) {
                 onPress={() => {
                   likeArticle(article);
                 }}
-                underlayColor="#dfdfdf">
+                underlayColor="#737773">
                 <Icon
                   name="heart-outline"
                   color="#ff8000"
@@ -250,7 +253,7 @@ export default function ArticleDetail(props) {
                     borderRadius: 20,
                   }}
                   onPress={() => likeArticle(article)}
-                  underlayColor="#dfdfdf">
+                  underlayColor="#737773">
                   <Icon
                     name="heart"
                     color="#ff8000"
@@ -283,7 +286,7 @@ export default function ArticleDetail(props) {
                 borderRadius: 20,
               }}
               onPress={() => {}}
-              underlayColor="#dfdfdf">
+              underlayColor="#737773">
               <Icon
                 name="chatbubbles-outline"
                 color="#058AB3"
@@ -333,7 +336,7 @@ export default function ArticleDetail(props) {
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <Icon
               name="person-circle"
-              style={{fontSize: 40, color: '#ff8000'}}
+              style={{fontSize: 40, color: '#77a6b7'}}
             />
             <View
               style={{
