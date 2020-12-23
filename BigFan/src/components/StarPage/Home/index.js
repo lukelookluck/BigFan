@@ -15,9 +15,16 @@ import SingleArticle from '../../SingleArticle';
 import {useCollapsibleScene} from 'react-native-collapsible-tab-view';
 import {CommonContext} from '../../../common/context/CommonContext';
 
-export default function MyPage(props) {
+export default function StarPage(props) {
   const articleList = props.HomeArticles.map((article, idx) => {
-    return <SingleArticle key={idx} article={article} />;
+    return (
+      <SingleArticle
+        key={idx}
+        idx={idx}
+        article={article}
+        navigation={props.navigation}
+      />
+    );
   });
 
   const scrollPropsAndRef = useCollapsibleScene('first');
@@ -92,8 +99,6 @@ export default function MyPage(props) {
         backgroundColor: '#282d29',
       }}>
       <MyHeader />
-      {articleList}
-      {articleList}
       {articleList}
     </Animated.ScrollView>
   );

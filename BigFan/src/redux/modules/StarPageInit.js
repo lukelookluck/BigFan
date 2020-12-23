@@ -14,6 +14,7 @@ const initialState = {
       likesCnt: 1,
       commentsCnt: 0,
       starName: '스타이름',
+      isLiked: true,
     },
     {
       id: 2,
@@ -23,6 +24,7 @@ const initialState = {
       likesCnt: 1,
       commentsCnt: 0,
       starName: '스타이름',
+      isLiked: false,
     },
     {
       id: 3,
@@ -32,6 +34,7 @@ const initialState = {
       likesCnt: 1,
       commentsCnt: 0,
       starName: '스타이름',
+      isLiked: true,
     },
   ],
 };

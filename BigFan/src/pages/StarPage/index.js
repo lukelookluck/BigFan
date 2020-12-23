@@ -12,7 +12,7 @@ import {
   useCollapsibleScene,
 } from 'react-native-collapsible-tab-view';
 
-export default function MyPage({HomeArticles, starName}) {
+export default function MyPage({HomeArticles, starName, navigation}) {
   const [index, setIndex] = useState(0);
   const [routes] = React.useState([
     {key: 'first', title: '홈'},
@@ -26,24 +26,16 @@ export default function MyPage({HomeArticles, starName}) {
     setIndex(index);
   };
 
-  const SomeRoute = ({routeKey, color}) => {
-    const scrollPropsAndRef = useCollapsibleScene(routeKey);
-
-    return (
-      <Animated.ScrollView
-        style={{backgroundColor: color}}
-        {...scrollPropsAndRef}>
-        <View style={{height: 1500}}>
-          <Text>asd</Text>
-        </View>
-      </Animated.ScrollView>
-    );
-  };
-
   const renderScene = ({route}) => {
     switch (route.key) {
       case 'first':
-        return <StarPageHome starName={starName} HomeArticles={HomeArticles} />;
+        return (
+          <StarPageHome
+            starName={starName}
+            HomeArticles={HomeArticles}
+            navigation={navigation}
+          />
+        );
       case 'second':
         return <SaySomething starName={starName} />;
       case 'third':

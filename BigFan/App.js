@@ -27,8 +27,8 @@ import Home from './src/pages/Home';
 import Schedule from './src/pages/Schedule';
 import BoardList from './src/pages/BoardList';
 import MyPage from './src/pages/MyPage';
-import StarPage from './src/pages/StarPage';
 import StarPageContainer from './src/redux/containers/StarPageContainer';
+import ArticleDetail from './src/pages/ArticleDetail';
 
 const Tab = createBottomTabNavigator();
 
@@ -143,72 +143,27 @@ function MyStack() {
         })}
         component={StarPageContainer}
       />
+      <Stack.Screen
+        name="ArticleDetail"
+        options={({route}) => ({
+          title: null,
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          headerShown: true,
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: '#282d29',
+            borderBottomColor: '#959595',
+            borderBottomWidth: 1,
+          },
+        })}
+        component={ArticleDetail}
+      />
       {/* <Stack.Screen name="Settings" component={Settings} /> */}
     </Stack.Navigator>
   );
 }
 
 export default function App() {
-  const homeArticles = [
-    {
-      id: 1,
-      nickname: '닉네임',
-      title: '제목',
-      content: '내용',
-      likesCnt: 1,
-      commentsCnt: 0,
-      starName: '스타이름',
-    },
-    {
-      id: 2,
-      nickname: '닉네임',
-      title: '제목',
-      content: '내용',
-      likesCnt: 1,
-      commentsCnt: 0,
-      starName: '스타이름',
-    },
-    {
-      id: 3,
-      nickname: '닉네임',
-      title: '제목',
-      content: '내용',
-      likesCnt: 1,
-      commentsCnt: 0,
-      starName: '스타이름',
-    },
-  ];
-
-  const starPageHomeArticles = [
-    {
-      id: 1,
-      nickname: '닉네임',
-      title: '제목starPageHomeArticles',
-      content: '내용',
-      likesCnt: 1,
-      commentsCnt: 0,
-      starName: '스타이름',
-    },
-    {
-      id: 2,
-      nickname: '닉네임',
-      title: '제목',
-      content: '내용',
-      likesCnt: 1,
-      commentsCnt: 0,
-      starName: '스타이름',
-    },
-    {
-      id: 3,
-      nickname: '닉네임',
-      title: '제목',
-      content: '내용',
-      likesCnt: 1,
-      commentsCnt: 0,
-      starName: '스타이름',
-    },
-  ];
-
   const store = createStore(rootReducer);
   console.log(store.getState());
 

@@ -4,12 +4,10 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function SingleArticle(props) {
   function onPress() {
-    // props.navigation.navigate('ArticleDisplay', {
-    //   article: props.article,
-    //   idx: props.idx,
-    // }
-    // );
-    console.log('SingleArticle 눌러짐');
+    props.navigation.navigate('ArticleDetail', {
+      article: props.article,
+      idx: props.idx,
+    });
   }
 
   const [article, setArticle] = useState(props.article);

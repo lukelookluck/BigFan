@@ -3,8 +3,14 @@ import {connect} from 'react-redux';
 import StarPage from '../../pages/StarPage';
 import {receive} from '../modules/StarPageInit';
 
-function StarPageContainer({HomeArticles, route}) {
-  return <StarPage HomeArticles={HomeArticles} starName={route.params.name} />;
+function StarPageContainer({navigation, HomeArticles, route}) {
+  return (
+    <StarPage
+      HomeArticles={HomeArticles}
+      starName={route.params.name}
+      navigation={navigation}
+    />
+  );
 }
 
 function mapStateToProps(state) {
