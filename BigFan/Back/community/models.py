@@ -7,3 +7,6 @@ class Article(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=20)
     detail = models.TextField()
+
+    def __str__(self):
+        return '[{}] {}, {}'.format(self.pk, self.title, self.detail)
