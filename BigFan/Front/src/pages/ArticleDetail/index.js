@@ -354,7 +354,7 @@ export default function ArticleDetail(props) {
                 style={{
                   flex: 1,
                   textAlignVertical: 'center',
-                  color: '#5e5e5e',
+                  color: '#8b8b8b',
                 }}>
                 댓글 작성하기..
               </Text>
