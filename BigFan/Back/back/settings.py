@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-import os, json
+import os, json, datetime
 from django.core.exceptions import ImproperlyConfigured
 from pathlib import Path
 
@@ -20,9 +20,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-secret_file = os.path.join(BASE_DIR, 'secrets.json')
+# secret_file = os.path.join(BASE_DIR, 'secrets.json')
 
-with open(os.path.join(BASE_DIR, 'secrets.json'), 'rb') as secret_file:
+with open(os.path.join(BASE_DIR, 'secrets.json')) as secret_file:
     secrets = json.load(secret_file)
 
 def get_secret(setting, secrets=secrets):
@@ -67,6 +67,7 @@ INSTALLED_APPS = [
 
     # app
     'community',
+    'accounts',
 
     # provider
     'allauth.socialaccount.providers.kakao'
@@ -105,8 +106,6 @@ WSGI_APPLICATION = 'back.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-import my_settings
 
 DATABASES = secrets['DATABASES']
 
@@ -154,8 +153,8 @@ SITE_ID = 1
 SOCIALACCOUNT_PROVIDERS = {
     'kakao': {
         'APP': {
-            'client_id': get_secret("REST_API_KEY"),
-            'secret': get_secret("KAKAO_APP_ID"),
+            'client_id': secrets['KAKAO']['REST_API_KEY'],
+            'secret': secrets['KAKAO']['APP_ID'],
             'key': ''
         }
     }
@@ -168,5 +167,17 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
     ],
 }
+
+JWT_AUTH = { 
+    'JWT_SECRET_KEY': get_secret("DJANGO_SECRET_KEY"),
+    'JWT_ALGORITHM': 'HS256', 
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7), 
+    'JWT_ALLOW_REFRESH': True, 
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=28), 
+}
+
+REST_USE_JWT = True
+ACCOUNT_LOGOUT_ON_GET = True

@@ -15,18 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from . import views
+from rest_framework_jwt.views import obtain_jwt_token, verify_jwt_token, refresh_jwt_token
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('community/', include('community.urls')),
+    path('accounts/', include('accounts.urls')),
 
-    path('account/', include('rest_auth.urls')),
-    path('account/registration/', include('rest_auth.registration.urls')),
-    path('account/', include('allauth.urls')),
+    path('rest-auth/', include('rest_auth.urls')),
+    path('rest-auth/registration/', include('rest_auth.registration.urls')),
+    path('rest-auth/', include('allauth.urls')),
 
-    path('account/login/kakao/', views.kakao_login),
-    path('account/login/kakao/callback/', views.kakao_callback),
+    path('token/', obtain_jwt_token),
+    path('token/verify/', verify_jwt_token),
+    path('token/refresh/', refresh_jwt_token),
 
 
 ]
